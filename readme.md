@@ -28,7 +28,7 @@ Run the producer... now list the schemas.
         {
             "RegistryName": "default-registry",
             "SchemaName": "quoteSchema",
-            "SchemaArn": "arn:aws:glue:us-east-1:230586709464:schema/default-registry/quoteSchema",
+            "SchemaArn": "arn:aws:glue:us-east-1:nnnnnnnnnn:schema/default-registry/quoteSchema",
             "Description": "DEFAULT-DESCRIPTION-us-east-1-default-registry",
             "SchemaStatus": "AVAILABLE",
             "CreatedTime": "2021-11-06T16:30:02.089Z",
