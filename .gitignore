@@ -1,0 +1,6 @@
+.idea/
+.ipynb_checkpoints/
+target/
+kinesis-glue.iml
+.project
+.settings/
