@@ -39,7 +39,7 @@ public class QuotesProducer {
 
             LOG.info("quoting {} {}", symbol, price);
             streamWriter.writeToStream("kpltest", symbol, symbol, price);
-            Thread.sleep(150);
+            Thread.sleep(15);
         }
     }
 }

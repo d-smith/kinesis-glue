@@ -6,12 +6,18 @@ Note schemas are created on the fly if they do not exist:
 
 Before:
 
-``
+```
 aws glue list-schemas        
 {
 "Schemas": []
 }
-``
+```
+
+Create the registry
+
+```
+aws glue create-registry --registry-name registry-sample
+```
 
 Create the stream...
 
@@ -22,18 +28,43 @@ Create the stream...
 Run the producer... now list the schemas.
 
 ```
-% aws glue list-schemas
+ % aws glue list-schemas   
 {
     "Schemas": [
         {
-            "RegistryName": "default-registry",
+            "RegistryName": "registry-sample",
             "SchemaName": "quoteSchema",
-            "SchemaArn": "arn:aws:glue:us-east-1:nnnnnnnnnn:schema/default-registry/quoteSchema",
-            "Description": "DEFAULT-DESCRIPTION-us-east-1-default-registry",
+            "SchemaArn": "arn:aws:glue:us-east-1:nnnnnnnnn:schema/registry-sample/quoteSchema",
+            "Description": "registry to store schema for sample appllication",
             "SchemaStatus": "AVAILABLE",
-            "CreatedTime": "2021-11-06T16:30:02.089Z",
-            "UpdatedTime": "2021-11-06T16:30:02.089Z"
+            "CreatedTime": "2021-11-07T16:42:28.617Z",
+            "UpdatedTime": "2021-11-07T16:42:28.617Z"
         }
     ]
 }
+
 ```
+
+To get the schema definition
+
+aws glue get-schema --schema-id SchemaName=quoteSchema,RegistryName=registry-sample
+
+```
+{
+    "RegistryName": "registry-sample",
+    "RegistryArn": "arn:aws:glue:us-east-1:230586709464:registry/registry-sample",
+    "SchemaName": "quoteSchema",
+    "SchemaArn": "arn:aws:glue:us-east-1:230586709464:schema/registry-sample/quoteSchema",
+    "Description": "registry to store schema for sample appllication",
+    "DataFormat": "AVRO",
+    "Compatibility": "BACKWARD",
+    "SchemaCheckpoint": 1,
+    "LatestSchemaVersion": 1,
+    "NextSchemaVersion": 2,
+    "SchemaStatus": "AVAILABLE",
+    "CreatedTime": "2021-11-07T16:42:28.617Z",
+    "UpdatedTime": "2021-11-07T16:42:28.617Z"
+}aq
+```
+
+

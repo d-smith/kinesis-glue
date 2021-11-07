@@ -55,6 +55,10 @@ public class StreamWriter {
         GlueSchemaRegistryConfiguration schemaRegistryConfig =
                 new GlueSchemaRegistryConfiguration(System.getenv("AWS_REGION"));
         schemaRegistryConfig.setSchemaAutoRegistrationEnabled(true);
+        schemaRegistryConfig.setRegistryName("registry-sample");
+        schemaRegistryConfig.setDescription("registry to store schema for sample appllication");
+        schemaRegistryConfig.setCacheSize(100);
+        schemaRegistryConfig.setTimeToLiveMillis(24*60*60*1000);
 
         logger.info("initializing KPL");
         KinesisProducerConfiguration config = new KinesisProducerConfiguration()
