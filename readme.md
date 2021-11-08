@@ -2,7 +2,7 @@
 
 Implementation of the concepts presented in [this](https://aws.amazon.com/blogs/big-data/validate-evolve-and-control-schemas-in-amazon-msk-and-amazon-kinesis-data-streams-with-aws-glue-schema-registry/) blog entry.
 
-Note schemas are created on the fly if they do not exist:
+Note schema registries are created on the fly and schemas added if they do not exist:
 
 Before:
 
