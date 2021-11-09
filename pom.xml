@@ -123,6 +123,12 @@ under the License.
 			<version>${flink.version}</version>
 		</dependency>
 
+		<dependency>
+			<groupId>software.amazon.glue</groupId>
+			<artifactId>schema-registry-flink-serde</artifactId>
+			<version>1.0.0</version>
+		</dependency>
+
 	</dependencies>
 
 	<build>

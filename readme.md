@@ -64,7 +64,7 @@ aws glue get-schema --schema-id SchemaName=quoteSchema,RegistryName=registry-sam
     "SchemaStatus": "AVAILABLE",
     "CreatedTime": "2021-11-07T16:42:28.617Z",
     "UpdatedTime": "2021-11-07T16:42:28.617Z"
-}aq
+}
 ```
 
 
