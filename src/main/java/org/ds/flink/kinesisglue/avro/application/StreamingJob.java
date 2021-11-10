@@ -1,18 +1,13 @@
 
 
-package org.ds.flink.kinesisglue.application;
+package org.ds.flink.kinesisglue.avro.application;
 
-import com.amazonaws.services.schemaregistry.common.AWSSchemaRegistryClient;
-import com.amazonaws.services.schemaregistry.common.configs.GlueSchemaRegistryConfiguration;
-import com.amazonaws.services.schemaregistry.deserializers.GlueSchemaRegistryDeserializer;
-import com.amazonaws.services.schemaregistry.deserializers.GlueSchemaRegistryDeserializerImpl;
 import com.amazonaws.services.schemaregistry.flink.avro.GlueSchemaRegistryAvroDeserializationSchema;
 import com.amazonaws.services.schemaregistry.utils.AWSSchemaRegistryConstants;
 import com.amazonaws.services.schemaregistry.utils.AvroRecordType;
 import org.apache.avro.Schema;
 import org.apache.avro.generic.GenericRecord;
 import org.apache.flink.api.common.functions.ReduceFunction;
-import org.apache.flink.api.common.serialization.SimpleStringSchema;
 import org.apache.flink.streaming.api.datastream.DataStream;
 import org.apache.flink.streaming.api.environment.StreamExecutionEnvironment;
 import org.apache.flink.streaming.api.windowing.assigners.TumblingProcessingTimeWindows;

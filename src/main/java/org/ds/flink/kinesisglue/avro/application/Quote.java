@@ -1,4 +1,4 @@
-package org.ds.flink.kinesisglue.application;
+package org.ds.flink.kinesisglue.avro.application;
 
 public class Quote {
     public String symbol;

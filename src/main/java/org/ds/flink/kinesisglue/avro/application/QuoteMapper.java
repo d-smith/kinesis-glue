@@ -1,4 +1,4 @@
-package org.ds.flink.kinesisglue.application;
+package org.ds.flink.kinesisglue.avro.application;
 
 import org.apache.avro.generic.GenericRecord;
 import org.apache.avro.util.Utf8;

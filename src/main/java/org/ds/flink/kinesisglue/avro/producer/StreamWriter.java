@@ -1,4 +1,4 @@
-package org.ds.flink.kinesisglue.producer;
+package org.ds.flink.kinesisglue.avro.producer;
 
 import com.amazonaws.services.kinesis.producer.KinesisProducer;
 import com.amazonaws.services.kinesis.producer.KinesisProducerConfiguration;
@@ -6,7 +6,6 @@ import com.amazonaws.services.kinesis.producer.UserRecordFailedException;
 import com.amazonaws.services.kinesis.producer.UserRecordResult;
 import com.amazonaws.services.schemaregistry.common.Schema;
 import com.amazonaws.services.schemaregistry.common.configs.GlueSchemaRegistryConfiguration;
-import com.amazonaws.services.schemaregistry.utils.AWSSchemaRegistryConstants;
 import com.google.common.util.concurrent.FutureCallback;
 import com.google.common.util.concurrent.Futures;
 import com.google.common.util.concurrent.ListenableFuture;
