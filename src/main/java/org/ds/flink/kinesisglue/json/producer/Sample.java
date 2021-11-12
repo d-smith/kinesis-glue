@@ -17,23 +17,24 @@ import software.amazon.awssdk.auth.credentials.AwsCredentialsProvider;
 import software.amazon.awssdk.auth.credentials.DefaultCredentialsProvider;
 import software.amazon.awssdk.services.glue.model.DataFormat;
 
+import java.nio.ByteBuffer;
+
 public class Sample {
     private static  Logger logger = LoggerFactory.getLogger(Sample.class);
 
     public static void main(String... args) {
-        String jsonSchema = "{\n" + "        \"$schema\": \"http://json-schema.org/draft-04/schema#\",\n"
-                + "        \"type\": \"object\",\n" + "        \"properties\": {\n" + "          \"employee\": {\n"
-                + "            \"type\": \"object\",\n" + "            \"properties\": {\n"
-                + "              \"name\": {\n" + "                \"type\": \"string\"\n" + "              },\n"
-                + "              \"age\": {\n" + "                \"type\": \"integer\"\n" + "              },\n"
-                + "              \"city\": {\n" + "                \"type\": \"string\"\n" + "              }\n"
-                + "            },\n" + "            \"required\": [\n" + "              \"name\",\n"
-                + "              \"age\",\n" + "              \"city\"\n" + "            ]\n" + "          }\n"
-                + "        },\n" + "        \"required\": [\n" + "          \"employee\"\n" + "        ]\n"
-                + "      }";
-        String jsonPayload = "{\n" + "        \"employee\": {\n" + "          \"name\": \"John\",\n" + "          \"age\": 30,\n"
-                + "          \"city\": \"New York\"\n" + "        }\n" + "      }";
 
+        String jsonSchema = "{" +
+                "\"$schema\": \"http://json-schema.org/draft-04/schema#\"," +
+                "\"type\":\"object\"," +
+                "\"properties\": {" +
+                "\"symbol\":{\"type\":\"string\"}," +
+                "\"price\":{\"type\":\"number\"}" +
+                "}," +
+                "\"required\":[\"symbol\",\"price\"]}";
+
+
+        String jsonPayload = "{\"symbol\":\"AAPL\",\"price\":12312.23}";
         JsonDataWithSchema jsonSchemaWithData = JsonDataWithSchema.builder(jsonSchema, jsonPayload).build();
         logger.info(jsonSchemaWithData.toString());
 
@@ -60,7 +61,7 @@ public class Sample {
                 new GlueSchemaRegistrySerializerFactory().getInstance(dataFormat, gsrConfig);
 
         Schema gsrSchema =
-                new Schema(dataFormatSerializer.getSchemaDefinition(record), dataFormat.name(), "MySchema");
+                new Schema(dataFormatSerializer.getSchemaDefinition(record), dataFormat.name(), "JsonQuote");
 
         byte[] serializedBytes = dataFormatSerializer.serialize(record);
 
@@ -72,8 +73,11 @@ public class Sample {
                 new GlueSchemaRegistryDeserializerFactory().getInstance(dataFormat, gsrConfig);
 
         Schema theSchema = gsrDeserializer.getSchema(gsrEncodedBytes);
-
         logger.info(theSchema.getSchemaDefinition());
+
+        byte[] dataFromEncoded = gsrDeserializer.getData(gsrEncodedBytes);
+        Object thing = dataFormatDeserializer.deserialize(ByteBuffer.wrap(gsrEncodedBytes), theSchema.getSchemaDefinition());
+        logger.info(thing.toString());
 
         logger.info("done...");
     }
