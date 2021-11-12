@@ -60,8 +60,10 @@ public class Sample {
         GlueSchemaRegistryDataFormatSerializer dataFormatSerializer =
                 new GlueSchemaRegistrySerializerFactory().getInstance(dataFormat, gsrConfig);
 
+        logger.info("get the schema from the registry");
         Schema gsrSchema =
-                new Schema(dataFormatSerializer.getSchemaDefinition(record), dataFormat.name(), "JsonQuote");
+                new Schema(dataFormatSerializer.getSchemaDefinition(record), dataFormat.name(), "JsonQuote2");
+        logger.info("read {}", gsrSchema.toString());
 
         byte[] serializedBytes = dataFormatSerializer.serialize(record);
 
