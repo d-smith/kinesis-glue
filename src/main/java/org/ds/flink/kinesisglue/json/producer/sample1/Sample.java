@@ -1,4 +1,4 @@
-package org.ds.flink.kinesisglue.json.producer;
+package org.ds.flink.kinesisglue.json.producer.sample1;
 
 import com.amazonaws.services.schemaregistry.common.GlueSchemaRegistryDataFormatDeserializer;
 import com.amazonaws.services.schemaregistry.common.GlueSchemaRegistryDataFormatSerializer;
@@ -63,10 +63,12 @@ public class Sample {
         logger.info("get the schema from the registry");
         Schema gsrSchema =
                 new Schema(dataFormatSerializer.getSchemaDefinition(record), dataFormat.name(), "JsonQuote2");
-        logger.info("read {}", gsrSchema.toString());
+        logger.info("gsrSchema is {}", gsrSchema.toString());
 
+        logger.info("create serialized bytes from record");
         byte[] serializedBytes = dataFormatSerializer.serialize(record);
 
+        logger.info("encode bytes using gsr serializer");
         byte[] gsrEncodedBytes = glueSchemaRegistrySerializer.encode("kpltest", gsrSchema, serializedBytes);
 
         GlueSchemaRegistryDeserializer gsrDeserializer =
