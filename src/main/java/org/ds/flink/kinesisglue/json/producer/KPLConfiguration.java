@@ -1,4 +1,4 @@
-package org.ds.flink.kinesisglue.json;
+package org.ds.flink.kinesisglue.json.producer;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;

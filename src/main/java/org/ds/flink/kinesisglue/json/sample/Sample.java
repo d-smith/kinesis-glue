@@ -1,4 +1,4 @@
-package org.ds.flink.kinesisglue.json.producer.sample1;
+package org.ds.flink.kinesisglue.json.sample;
 
 import com.amazonaws.services.schemaregistry.common.GlueSchemaRegistryDataFormatDeserializer;
 import com.amazonaws.services.schemaregistry.common.GlueSchemaRegistryDataFormatSerializer;

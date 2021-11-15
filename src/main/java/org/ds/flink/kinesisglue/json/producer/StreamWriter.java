@@ -1,4 +1,4 @@
-package org.ds.flink.kinesisglue.json;
+package org.ds.flink.kinesisglue.json.producer;
 
 import com.amazonaws.services.kinesis.producer.KinesisProducer;
 import com.amazonaws.services.kinesis.producer.KinesisProducerConfiguration;
@@ -23,7 +23,6 @@ import software.amazon.awssdk.auth.credentials.AwsCredentialsProvider;
 import software.amazon.awssdk.auth.credentials.DefaultCredentialsProvider;
 import software.amazon.awssdk.services.glue.model.DataFormat;
 
-import java.io.ByteArrayOutputStream;
 import java.nio.ByteBuffer;
 import java.util.Random;
 import java.util.concurrent.ExecutorService;
